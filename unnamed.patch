@@ -1,0 +1,282 @@
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
++++ b/.idea/.gitignore	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
+@@ -0,0 +1,8 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Editor-based HTTP Client requests
++/httpRequests/
++# Datasource local storage ignored files
++/dataSources/
++/dataSources.local.xml
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
++++ b/.idea/modules.xml	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/ulibka.iml" filepath="$PROJECT_DIR$/.idea/ulibka.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/php.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/php.xml b/.idea/php.xml
+new file mode 100644
+--- /dev/null	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
++++ b/.idea/php.xml	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="MessDetectorOptionsConfiguration">
++    <option name="transferred" value="true" />
++  </component>
++  <component name="PHPCSFixerOptionsConfiguration">
++    <option name="transferred" value="true" />
++  </component>
++  <component name="PHPCodeSnifferOptionsConfiguration">
++    <option name="highlightLevel" value="WARNING" />
++    <option name="transferred" value="true" />
++  </component>
++  <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
++  <component name="PhpStanOptionsConfiguration">
++    <option name="transferred" value="true" />
++  </component>
++  <component name="PsalmOptionsConfiguration">
++    <option name="transferred" value="true" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/ulibka.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/ulibka.iml b/.idea/ulibka.iml
+new file mode 100644
+--- /dev/null	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
++++ b/.idea/ulibka.iml	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="WEB_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
++++ b/.idea/vcs.xml	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: auth.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/auth.php b/auth.php
+new file mode 100644
+--- /dev/null	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
++++ b/auth.php	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
+@@ -0,0 +1,24 @@
++<?php
++
++include 'connection.php';
++
++if ($_SERVER['REQUEST_METHOD'] === 'POST') {
++    $tel = $_POST['tel'];
++    $pass = $_POST['pass'];
++
++    // Поиск пользователя по номеру телефона и паролю
++    $stmt = pdo()->prepare("SELECT * FROM users WHERE tel = :tel AND pass = :pass");
++    $stmt->bindParam(':tel', $tel);
++    $stmt->bindParam(':pass', $pass);
++    $stmt->execute();
++    $user = $stmt->fetch();
++
++    if ($user) {
++        echo 'User authenticated successfully';
++        // Здесь можно выполнить дополнительные действия после успешной авторизации
++    } else {
++        echo 'Invalid phone number or password';
++    }
++}
++
++?>
+\ No newline at end of file
+Index: config.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/config.php b/config.php
+new file mode 100644
+--- /dev/null	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
++++ b/config.php	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
+@@ -0,0 +1,8 @@
++<?php
++
++return [
++    'db_name' => 'v928765y_pets',
++    'db_host' => 'localhost',
++    'db_user' => 'v928765y_pets',
++    'db_pass' => 'Philip1',
++];
+Index: connection.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/connection.php b/connection.php
+new file mode 100644
+--- /dev/null	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
++++ b/connection.php	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
+@@ -0,0 +1,29 @@
++<?php
++
++session_start();
++
++// Определите значение константы "DIR" - путь к корневой директории проекта
++
++
++// Простой способ сделать глобально доступным подключение в БД
++function pdo(): PDO
++{
++    static $pdo;
++
++    if (!$pdo) {
++        $config = include __DIR__.'/config.php';
++        // Подключение к БД
++        $dsn = 'mysql:dbname='.$config['db_name'].';host='.$config['db_host'];
++        try {
++            $pdo = new PDO($dsn, $config['db_user'], $config['db_pass']);
++            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
++            echo "Готово";
++        } catch (PDOException $e) {
++            echo "Ошибка подключения к базе данных: " . $e->getMessage();
++        }
++    }
++
++    return $pdo;
++}
++
++pdo();
+\ No newline at end of file
+Index: main.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.html b/main.html
+new file mode 100644
+--- /dev/null	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
++++ b/main.html	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
+@@ -0,0 +1,28 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Title</title>
++</head>
++<body>
++<form method="post" action="/reg.php">
++  <div class="mb-3">
++    <label for="username" class="form-label">Username</label>
++    <input type="text" class="form-control" id="username" name="name" required>
++  </div>
++  <div class="mb-3">
++    <label for="pass" class="form-label">Password</label>
++    <input type="password" class="form-control" id="pass" name="pass" required>
++  </div>
++  <div class="mb-3">
++    <label for="mail" class="form-label">mail</label>
++    <input type="text" class="form-control" id="mail" name="mail" required>
++  </div>
++  <div class="mb-3">
++    <label for="tel" class="form-label">tel</label>
++    <input type="text" class="form-control" id="tel" name="tel" required>
++  </div>
++  <button type="submit" class="btn btn-primary">Register</button>
++</form>
++</body>
++</html>
+\ No newline at end of file
+Index: reg.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/reg.php b/reg.php
+new file mode 100644
+--- /dev/null	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
++++ b/reg.php	(revision e812b540a2435ea2ab96a7491eeb1abc37c6d1e7)
+@@ -0,0 +1,36 @@
++<?php
++include 'connection.php';
++
++if ($_SERVER['REQUEST_METHOD'] === 'POST') {
++    $name = $_POST['name'];
++    $pass = $_POST['pass'];
++    $mail = $_POST['mail'];
++    $tel = $_POST['tel'];
++
++    // Проверка наличия номера телефона в базе данных
++    $stmt_check = pdo()->prepare("SELECT COUNT(*) FROM users WHERE tel = :tel");
++    $stmt_check->bindParam(':tel', $tel);
++    $stmt_check->execute();
++    $tel_count = $stmt_check->fetchColumn();
++
++    if ($tel_count > 0) {
++        echo 'Phone number already exists in the database';
++    } else {
++        // Подготовка запроса
++        $stmt = pdo()->prepare("INSERT INTO users (name, pass, mail, tel) VALUES (:name, :pass, :mail, :tel)");
++
++        // Привязка параметров
++        $stmt->bindParam(':name', $name);
++        $stmt->bindParam(':pass', $pass);
++        $stmt->bindParam(':mail', $mail);
++        $stmt->bindParam(':tel', $tel);
++
++        // Выполнение запроса
++        if ($stmt->execute()) {
++            echo 'User registered successfully';
++        } else {
++            echo 'Error registering user';
++        }
++    }
++}
++?>

@@ -17,7 +17,6 @@ function pdo(): PDO
         try {
             $pdo = new PDO($dsn, $config['db_user'], $config['db_pass']);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Готово";
         } catch (PDOException $e) {
             echo "Ошибка подключения к базе данных: " . $e->getMessage();
         }
