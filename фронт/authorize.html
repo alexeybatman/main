@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/style.css">
+        <title>Лапочка</title>
+    </head>
+    <body>
+        <main class="page">
+            <div class="page__container container">
+                <a href="./index.html" class="page__back">Назад...</a>
+                <h1 class="page__title">Войдите в аккаунт</h1>
+                <form action="#" method="post" class="page__authorizeForm form">
+                    <div class="form__block">
+                        <label for="login" class="form__label">Логин:</label>
+                        <input type="text" name="login" id="login" class="form__input" placeholder="Введите логин...">
+                        <span class="hide">Введите корректный email *</span>
+                    </div>
+                    <div class="form__block">
+                        <label for="pass" class="form__label">Пароль:</label>
+                        <div class="wrapper">
+                            <input type="password" name="pass" id="pass" class="form__input" rel="to-replace-*" placeholder="Введите пароль...">
+                            <button type="button" class="form__showPass hidePass">
+                                <img src="./img/openEye.svg" alt="openEye" class="hide" id="openEye">
+                                <img src="./img/closeEye.svg" alt="closeEye" id="closeEye">
+                            </button>
+                        </div>
+                        <a href="№" class="form__forgetPass">Забыли пароль ?</a>
+                    </div>
+                    <button type="submit" class="form__submit disabled" disabled="true">Вход</button>
+                </form>
+            </div>
+        </main>
+        <script type="module" src="./js/index.js"></script>
+        <script type="module" src="./js/submit.js"></script>
+        <script type="module" src="./js/password.js"></script>
+        <script type="module" src="./js/login.js"></script>
+    </body>
+</html>

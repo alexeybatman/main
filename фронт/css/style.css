@@ -1,0 +1,235 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600);
+/* Reset and base styles  */
+* {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Links */
+
+a, a:link, a:visited  {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover  {
+    text-decoration: none;
+}
+
+/* Common */
+
+aside, nav, footer, header, section, main {
+	display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-size: inherit;
+	font-weight: inherit;
+}
+
+ul, ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+img, svg {
+	max-width: 100%;
+	height: auto;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Form */
+
+input, textarea, button, select {
+	font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+button, input[type="submit"] {
+    display: inline-block;
+    box-shadow: none;
+    background-color: transparent;
+    background: none;
+    cursor: pointer;
+}
+
+input:focus, input:active,
+button:focus, button:active {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+label {
+	cursor: pointer;
+}
+
+legend {
+	display: block;
+}
+
+/*----------------------------------*/
+:root {
+    --1gradient_col: #EC788C;
+    --2gradient-col: #f4c4e1;
+    --action-bg: #38B5B5;
+    --action-disabled-bg:rgba(50, 126, 126, 0.805)5;
+}
+.page {
+    height: 100vh;
+    font-family: "Montserrat", sans-serif;
+}
+
+.page__container {
+    position: relative;
+    height: 100%;
+    padding-top: 210px;
+    background: radial-gradient(circle,var(--1gradient_col) 8%,var(--2gradient-col));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 60px;
+}
+
+.container {
+    max-width: 455px;
+    padding-inline: 15px;
+    margin: 0 auto;
+}
+
+.page__title {
+    font-weight: 700;
+    font-size: 32px;
+    text-align: center;
+}
+
+.page__actions {
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    align-items: center;
+    width: 90%;
+}
+
+.page__link {
+    font-weight: 500;
+    font-size: 24px;
+    text-align: center;
+    background-color: var(--action-bg);
+    width: inherit;
+    padding: 8px 24px;
+    border-radius: 15px;
+    transition:background-color .6s;
+}
+
+.page__link:hover {
+    background-color: #46d2d2;
+}
+
+.page__link:active {
+    background-color: #3d9797;
+}
+
+/*------------------Авторизация-----------------*/
+
+.page__authorizeForm {
+    row-gap: 40px;
+}
+.page__back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+
+.form__block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.form__block span{
+    color: red;
+
+}
+
+.form__label {
+    font-weight: 500;
+    font-size: 24px;
+}
+.wrapper {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.form__input {
+    flex-grow: 1;
+    background-color: var(--action-bg);
+    width: inherit;
+    padding: 10px 24px;
+    border-radius: 15px;
+}
+
+.form__input::placeholder {
+    color: black;
+}
+.form__showPass {
+    position: absolute;
+    right: 10px;
+    
+}
+.form__showPass img{
+    width: 25px;
+    height: 25px;
+}
+
+a.form__forgetPass {
+    color: black;
+}
+
+.form__submit {
+    width: 50%;
+    background-color: var(--action-bg);
+    border:#3e7777 4px solid;
+    padding: 10px 24px;
+    border-radius: 15px;
+}
+
+.form__submit.disabled {
+    cursor: default;
+    background-color: #48878782
+}
+
+.hide {
+    display: none;
+}
